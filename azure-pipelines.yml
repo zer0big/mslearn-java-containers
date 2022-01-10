@@ -49,11 +49,13 @@ stages:
       displayName: Run MySQL initialization script
       inputs:
         azureSubscription: 'svcconn4bgazsa'
-        serverName: '$(MySqlServer).mysql.database.azure.com'
-        databaseName: 'alm'
-        sqlUsername: $(MySqlUserName)@$(MySqlServer)
-        sqlPassword: $(MySqlPassword)
-        sqlFile: '$(Build.SourcesDirectory)/CreateMYSQLDB.sql'   
+        ServerName: 'db4javacontapp-zerobig.mysql.database.azure.com'
+        DatabaseName: 'alm'
+        SqlUsername: 'sysadmin@db4javacontapp-zerobig.mysql.database.azure.com'
+        SqlPassword: 'P@ssw0rd'
+        TaskNameSelector: 'SqlTaskFile'
+        SqlFile: '$(Build.SourcesDirectory)/CreateMYSQLDB.sql'
+        IpDetectionMethod: 'AutoDetect'
     - task: Bash@3
       inputs:
         targetType: 'inline'
