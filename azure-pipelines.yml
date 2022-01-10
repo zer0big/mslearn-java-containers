@@ -24,8 +24,13 @@ stages:
     - task: Maven@3
       displayName: 'Maven pom.xml'
       inputs:
-        options: '-DskipITs --settings ./maven/settings.xml'
+        mavenPomFile: 'pom.xml'
         publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
     - task: CopyFiles@2
       displayName: Copy WAR file to staging directory
       inputs:
